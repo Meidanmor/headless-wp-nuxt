@@ -10,7 +10,7 @@
           <small>{{ post.date | dateformat }}</small>
           <div v-html="post.excerpt.rendered"></div>
           <nuxt-link :to="`blog/${post.slug}`">
-          <a :href="javascript:void(0)" class="readmore slide">Read more ⟶</a>
+          <a href="javascript:void(0)" class="readmore slide">Read more ⟶</a>
 </nuxt-link>
         </div>
       </main>
