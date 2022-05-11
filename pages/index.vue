@@ -24,7 +24,7 @@
               :key="tag.id"
               :class="[tag.id === selectedTag ? activeClass : '']"
             >
-              <a>{{ tag.name }}</a>
+              <a href="javascript:void(0)">{{ tag.name }}</a>
               <span v-if="tag.id === selectedTag">✕</span>
             </li>
           </ul>
