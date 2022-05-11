@@ -2,12 +2,16 @@ const siteURL = "https://css-tricks.com"
 
 export const state = () => ({
   posts: [],
+  post: [],
   tags: []
 })
 
 export const mutations = {
   updatePosts: (state, posts) => {
     state.posts = posts
+  },
+  updatePost: (state, post) => {
+    state.post = post
   },
   updateTags: (state, tags) => {
     state.tags = tags
@@ -36,6 +40,31 @@ export const actions = {
         }))
 
       commit("updatePosts", posts)
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  async getPost({ state, commit, dispatch }) {
+    if (state.post.length) return
+
+    try {
+      let post = await fetch(
+        `${siteURL}/wp-json/wp/v2/posts/?slug=" + this.$route.params.postSlug
+      ).then(res => res.json())
+
+      post = post
+        .filter(el => el.status === "publish")
+        .map(({ id, slug, title, excerpt, date, tags, content }) => ({
+          id,
+          slug,
+          title,
+          excerpt,
+          date,
+          tags,
+          content
+        }))
+
+      commit("updatePost", post)
     } catch (err) {
       console.log(err)
     }
