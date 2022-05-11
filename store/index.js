@@ -49,7 +49,7 @@ export const actions = {
 
     try {
       let post = await fetch(
-        `${siteURL}/wp-json/wp/v2/posts/?slug=" + this.$route.params.postSlug
+        `${siteURL}/wp-json/wp/v2/posts/?slug=" + state.post.slug
       ).then(res => res.json())
 
       post = post
