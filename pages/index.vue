@@ -9,7 +9,7 @@
           </h3>
           <small>{{ post.date | dateformat }}</small>
           <div v-html="post.excerpt.rendered"></div>
-            <nuxt-link :to="{ name: 'post', params: { postSlug: post.slug }}">READ</nuxt-link>
+            <nuxt-link :to="{{ post.slug }}">READ</nuxt-link>
           <a :href="`blog/{post.slug}`" class="readmore slide">Read more ⟶</a>
         </div>
       </main>
