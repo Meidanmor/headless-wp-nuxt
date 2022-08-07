@@ -7,6 +7,8 @@
           <h3>
             <a :href="`blog/${post.slug}`">{{ post.title.rendered }}</a>
           </h3>
+                  <img :src="post.images.large" width="500" height="500"/>
+
           <small>{{ post.date | dateformat }}</small>
           <div v-html="post.excerpt.rendered"></div>
           <nuxt-link :to="`blog/${post.slug}`" class="readmore slide">
